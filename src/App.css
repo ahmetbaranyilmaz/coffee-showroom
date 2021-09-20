@@ -24,3 +24,8 @@ body {
   width: 100%;
   flex-wrap: wrap;
 }
+
+.input {
+  border-radius: 5px;
+  font-family: roboto-regular;
+}

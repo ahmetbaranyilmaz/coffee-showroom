@@ -29,3 +29,8 @@ body {
   border-radius: 5px;
   font-family: roboto-regular;
 }
+
+.category-item {
+  padding: 5px;
+  font-family: exo-bold;
+}

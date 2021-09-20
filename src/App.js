@@ -1,8 +1,13 @@
 import './App.css'
 import Home from './components/Home'
+import { CoffeeContextProvider } from './contexts/CoffeeContext'
 
 function App() {
-  return <Home />
+  return (
+    <CoffeeContextProvider>
+      <Home />
+    </CoffeeContextProvider>
+  )
 }
 
 export default App

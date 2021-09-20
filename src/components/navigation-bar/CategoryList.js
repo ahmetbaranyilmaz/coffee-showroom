@@ -1,5 +1,11 @@
+import CategoryListItem from './CategoryListItem'
+
 const CategoryList = () => {
-  return <ul className="category-list">item</ul>
+  return (
+    <ul className="category-list">
+      <CategoryListItem />
+    </ul>
+  )
 }
 
 export default CategoryList

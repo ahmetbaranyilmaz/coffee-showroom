@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-import CoffeeData from '../data/CoffeeData'
+import CoffeeData from '../assets/CoffeeData'
 
 export const CoffeeContext = createContext()
 export const useCoffee = () => useContext(CoffeeContext)

@@ -55,3 +55,17 @@ body {
   margin: 5px 0;
   padding: 2px 5px;
 }
+
+.title {
+  font-family: roboto-regular;
+}
+
+.ingredient,
+.description {
+  display: block;
+  font-family: roboto-regular;
+}
+
+ul {
+  list-style-type: none;
+}

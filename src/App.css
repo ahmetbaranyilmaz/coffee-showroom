@@ -25,6 +25,14 @@ body {
   flex-wrap: wrap;
 }
 
+.nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
 .input {
   border-radius: 5px;
   font-family: roboto-regular;

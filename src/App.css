@@ -42,3 +42,16 @@ body {
   padding: 5px;
   font-family: exo-bold;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+}
+
+.coffee-item {
+  margin: 5px 0;
+  padding: 2px 5px;
+}

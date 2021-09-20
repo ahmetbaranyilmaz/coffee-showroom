@@ -15,10 +15,18 @@ const CategoryList = () => {
     )
   ]
 
+  const capitalize = (category) =>
+    category === 'All Coffees'
+      ? 'All Coffees'
+      : category.charAt(0).toUpperCase() + category.toLowerCase().slice(1)
+
   return (
     <ul className="category-list">
       {uniqCategories.map((category) => (
-        <CategoryListItem key={`category@${category}`} text={category} />
+        <CategoryListItem
+          key={`category@${category}`}
+          text={capitalize(category)}
+        />
       ))}
     </ul>
   )

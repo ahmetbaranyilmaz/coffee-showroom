@@ -8,10 +8,19 @@ export const CoffeeContextProvider = ({ children }) => {
   const coffeeData = CoffeeData
   const [coffees, setCoffees] = useState(coffeeData)
 
+  const search = (title) => {
+    setCoffees(
+      coffeeData.filter((coffee) =>
+        coffee.title.toUpperCase().includes(title.toUpperCase())
+      )
+    )
+  }
+
   const contextValue = {
     coffeeData,
     coffees,
-    setCoffees
+    setCoffees,
+    search
   }
 
   return (

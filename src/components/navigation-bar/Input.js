@@ -2,16 +2,13 @@ import React from 'react'
 import { useCoffee } from '../../contexts/CoffeeContext'
 
 const Input = () => {
-  const { coffeeData, setCoffees } = useCoffee()
+  const { search } = useCoffee()
 
   const handleChange = (e) => {
     const title = e.target.value
-    console.log(title)
-    const newCoffee = coffeeData.filter((coffee) =>
-      coffee.title.toUpperCase().includes(title.toUpperCase())
-    )
-    setCoffees(newCoffee)
+    search(title)
   }
+
   return (
     <input
       className="input"

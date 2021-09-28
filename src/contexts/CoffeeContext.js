@@ -9,6 +9,8 @@ export const CoffeeContextProvider = ({ children }) => {
   const coffeeData = CoffeeData
   const [coffees, setCoffees] = useState(coffeeData)
 
+  const allCoffeesTxt = 'All Coffees'
+
   const searchByTitle = (title) => {
     title === ''
       ? setCoffees(coffeeData)
@@ -20,7 +22,7 @@ export const CoffeeContextProvider = ({ children }) => {
   }
 
   const filterByCategory = (category) => {
-    category === 'All Coffees'
+    category === allCoffeesTxt
       ? setCoffees(coffeeData)
       : setCoffees(
           coffees.filter((coffee) => coffee.category === category.toLowerCase())
@@ -28,7 +30,18 @@ export const CoffeeContextProvider = ({ children }) => {
   }
 
   const capitalizeCategory = (category) =>
-    category === 'All Coffees' ? 'All Coffees' : capitalize(category)
+    category === allCoffeesTxt ? allCoffeesTxt : capitalize(category)
+
+  const uniqCategories = [
+    allCoffeesTxt,
+    ...coffeeData.reduce(
+      (prevValue, curValue) =>
+        prevValue.includes(curValue.category)
+          ? prevValue
+          : [...prevValue, curValue.category],
+      []
+    )
+  ]
 
   const contextValue = {
     coffeeData,
@@ -36,7 +49,8 @@ export const CoffeeContextProvider = ({ children }) => {
     setCoffees,
     searchByTitle,
     filterByCategory,
-    capitalizeCategory
+    capitalizeCategory,
+    uniqCategories
   }
 
   return (

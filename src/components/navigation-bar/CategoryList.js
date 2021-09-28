@@ -2,18 +2,7 @@ import CategoryListItem from './CategoryListItem'
 import { useCoffee } from '../../contexts/CoffeeContext'
 
 const CategoryList = () => {
-  const { coffeeData, capitalizeCategory } = useCoffee()
-
-  const uniqCategories = [
-    'All Coffees',
-    ...coffeeData.reduce(
-      (prevValue, curValue) =>
-        prevValue.includes(curValue.category)
-          ? prevValue
-          : [...prevValue, curValue.category],
-      []
-    )
-  ]
+  const { uniqCategories, capitalizeCategory } = useCoffee()
 
   return (
     <ul className="category-list">

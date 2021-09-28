@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import CoffeeData from '../assets/CoffeeData'
+import capitalize from '../utils/capitalize'
 
 export const CoffeeContext = createContext()
 export const useCoffee = () => useContext(CoffeeContext)
@@ -26,12 +27,16 @@ export const CoffeeContextProvider = ({ children }) => {
         )
   }
 
+  const capitalizeCategory = (category) =>
+    category === 'All Coffees' ? 'All Coffees' : capitalize(category)
+
   const contextValue = {
     coffeeData,
     coffees,
     setCoffees,
     searchByTitle,
-    filterByCategory
+    filterByCategory,
+    capitalizeCategory
   }
 
   return (

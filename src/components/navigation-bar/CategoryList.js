@@ -1,9 +1,8 @@
 import CategoryListItem from './CategoryListItem'
 import { useCoffee } from '../../contexts/CoffeeContext'
-import capitalize from '../../utils/capitalize'
 
 const CategoryList = () => {
-  const { coffeeData } = useCoffee()
+  const { coffeeData, capitalizeCategory } = useCoffee()
 
   const uniqCategories = [
     'All Coffees',
@@ -16,13 +15,13 @@ const CategoryList = () => {
     )
   ]
 
-  const xx = (category) =>
-    category === 'All Coffees' ? 'All Coffees' : capitalize(category)
-
   return (
     <ul className="category-list">
       {uniqCategories.map((category) => (
-        <CategoryListItem key={`category@${category}`} text={xx(category)} />
+        <CategoryListItem
+          key={`category@${category}`}
+          text={capitalizeCategory(category)}
+        />
       ))}
     </ul>
   )

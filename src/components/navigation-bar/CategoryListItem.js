@@ -15,21 +15,8 @@ const CategoryListItem = ({ text }) => {
     }
   }
 
-  const handleMouseEnter = (e) => {
-    e.target.style.color = 'red'
-  }
-
-  const handleMouseLeave = (e) => {
-    e.target.style.color = 'black'
-  }
-
   return (
-    <li
-      className="category-item"
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <li className="category-item" onClick={handleClick}>
       {text}
     </li>
   )

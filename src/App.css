@@ -41,6 +41,11 @@ body {
 .category-item {
   padding: 5px;
   font-family: exo-bold;
+  cursor: pointer;
+}
+
+.category-item:hover {
+  color: red;
 }
 
 .content {

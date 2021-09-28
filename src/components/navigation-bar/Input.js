@@ -2,11 +2,11 @@ import React from 'react'
 import { useCoffee } from '../../contexts/CoffeeContext'
 
 const Input = () => {
-  const { search } = useCoffee()
+  const { searchByTitle } = useCoffee()
 
   const handleChange = (e) => {
     const title = e.target.value
-    search(title)
+    searchByTitle(title)
   }
 
   return (

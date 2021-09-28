@@ -1,18 +1,11 @@
 import { useCoffee } from '../../contexts/CoffeeContext'
 
 const CategoryListItem = ({ text }) => {
-  const { coffeeData, setCoffees } = useCoffee()
+  const { filterByCategory } = useCoffee()
 
   const handleClick = (e) => {
     const category = e.target.innerText
-    if (category === 'All Coffees') {
-      setCoffees(coffeeData)
-    } else {
-      const newCoffees = coffeeData.filter(
-        (coffee) => coffee.category === category.toLowerCase()
-      )
-      setCoffees(newCoffees)
-    }
+    filterByCategory(category)
   }
 
   return (

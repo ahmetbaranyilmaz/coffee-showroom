@@ -8,19 +8,30 @@ export const CoffeeContextProvider = ({ children }) => {
   const coffeeData = CoffeeData
   const [coffees, setCoffees] = useState(coffeeData)
 
-  const search = (title) => {
-    setCoffees(
-      coffeeData.filter((coffee) =>
-        coffee.title.toUpperCase().includes(title.toUpperCase())
-      )
-    )
+  const searchByTitle = (title) => {
+    title === ''
+      ? setCoffees(coffeeData)
+      : setCoffees(
+          coffees.filter((coffee) =>
+            coffee.title.toUpperCase().includes(title.toUpperCase())
+          )
+        )
+  }
+
+  const filterByCategory = (category) => {
+    category === 'All Coffees'
+      ? setCoffees(coffeeData)
+      : setCoffees(
+          coffees.filter((coffee) => coffee.category === category.toLowerCase())
+        )
   }
 
   const contextValue = {
     coffeeData,
     coffees,
     setCoffees,
-    search
+    searchByTitle,
+    filterByCategory
   }
 
   return (

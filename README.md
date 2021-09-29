@@ -14,7 +14,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-You can search your favorite coffees
+## You can search your favorite coffees ☕
+![Search](https://user-images.githubusercontent.com/43939210/134054828-1ac389df-fc19-4194-825c-f7a74a34e3c6.png)
+
+## You can filter by categories 🔥 ❄️
+![image](https://user-images.githubusercontent.com/43939210/134055081-85a2ef25-ee02-4e80-9c77-3ae6a02475e2.png)
+
+
 
 ### `npm test`
 

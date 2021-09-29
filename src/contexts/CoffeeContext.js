@@ -27,9 +27,6 @@ export const CoffeeContextProvider = ({ children }) => {
     )
   }, [search, category, coffeeData])
 
-  const capitalizeCategory = (category) =>
-    category === allCoffeesTxt ? allCoffeesTxt : capitalize(category)
-
   const uniqCategories = [
     allCoffeesTxt,
     ...coffeeData.reduce(
@@ -40,6 +37,9 @@ export const CoffeeContextProvider = ({ children }) => {
       []
     )
   ]
+
+  const capitalizeCategory = (category) =>
+    category === allCoffeesTxt ? allCoffeesTxt : capitalize(category)
 
   const contextValue = {
     coffees,

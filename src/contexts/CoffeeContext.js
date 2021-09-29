@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback
+} from 'react'
 import CoffeeData from '../assets/CoffeeData'
 import capitalize from '../utils/capitalize'
 
@@ -7,11 +13,30 @@ export const useCoffee = () => useContext(CoffeeContext)
 
 export const CoffeeContextProvider = ({ children }) => {
   const coffeeData = CoffeeData
+  const allCoffeesTxt = 'All Coffees'
   const [coffees, setCoffees] = useState(coffeeData)
   const [search, setSearch] = useState('')
-
-  const allCoffeesTxt = 'All Coffees'
   const [category, setCategory] = useState(allCoffeesTxt)
+
+  const uniqCategoryFinder = useCallback(
+    () => [
+      allCoffeesTxt,
+      ...coffeeData.reduce(
+        (uniqCategoryList, coffee) =>
+          uniqCategoryList.includes(coffee.category)
+            ? uniqCategoryList
+            : [...uniqCategoryList, coffee.category],
+        []
+      )
+    ],
+    [coffeeData]
+  )
+
+  const [uniqCategories, setUniqCategories] = useState(uniqCategoryFinder())
+
+  useEffect(() => {
+    setUniqCategories(uniqCategoryFinder())
+  }, [uniqCategoryFinder])
 
   useEffect(() => {
     setCoffees(
@@ -26,17 +51,6 @@ export const CoffeeContextProvider = ({ children }) => {
         )
     )
   }, [search, category, coffeeData])
-
-  const uniqCategories = [
-    allCoffeesTxt,
-    ...coffeeData.reduce(
-      (prevValue, curValue) =>
-        prevValue.includes(curValue.category)
-          ? prevValue
-          : [...prevValue, curValue.category],
-      []
-    )
-  ]
 
   const capitalizeCategory = (category) =>
     category === allCoffeesTxt ? allCoffeesTxt : capitalize(category)

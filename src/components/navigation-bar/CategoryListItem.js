@@ -1,11 +1,11 @@
 import { useCoffee } from '../../contexts/CoffeeContext'
 
 const CategoryListItem = ({ text }) => {
-  const { filterByCategory } = useCoffee()
+  const { setCategory } = useCoffee()
 
   const handleClick = (e) => {
     const category = e.target.innerText
-    filterByCategory(category)
+    setCategory(category)
   }
 
   return (

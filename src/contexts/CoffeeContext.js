@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import CoffeeData from '../assets/CoffeeData'
 import capitalize from '../utils/capitalize'
 
@@ -8,26 +8,24 @@ export const useCoffee = () => useContext(CoffeeContext)
 export const CoffeeContextProvider = ({ children }) => {
   const coffeeData = CoffeeData
   const [coffees, setCoffees] = useState(coffeeData)
+  const [search, setSearch] = useState('')
 
   const allCoffeesTxt = 'All Coffees'
+  const [category, setCategory] = useState(allCoffeesTxt)
 
-  const searchByTitle = (title) => {
-    title === ''
-      ? setCoffees(coffeeData)
-      : setCoffees(
-          coffees.filter((coffee) =>
-            coffee.title.toUpperCase().includes(title.toUpperCase())
-          )
+  useEffect(() => {
+    setCoffees(
+      coffeeData
+        .filter((coffee) =>
+          coffee.title.toUpperCase().includes(search.toUpperCase())
         )
-  }
-
-  const filterByCategory = (category) => {
-    category === allCoffeesTxt
-      ? setCoffees(coffeeData)
-      : setCoffees(
-          coffees.filter((coffee) => coffee.category === category.toLowerCase())
+        .filter((coffee) =>
+          category === allCoffeesTxt
+            ? true
+            : coffee.category === category.toLowerCase()
         )
-  }
+    )
+  }, [search, category, coffeeData])
 
   const capitalizeCategory = (category) =>
     category === allCoffeesTxt ? allCoffeesTxt : capitalize(category)
@@ -44,13 +42,12 @@ export const CoffeeContextProvider = ({ children }) => {
   ]
 
   const contextValue = {
-    coffeeData,
     coffees,
     setCoffees,
-    searchByTitle,
-    filterByCategory,
+    uniqCategories,
     capitalizeCategory,
-    uniqCategories
+    setSearch,
+    setCategory
   }
 
   return (

@@ -3,13 +3,11 @@ import { useCoffee } from '../../contexts/CoffeeContext'
 const CategoryListItem = ({ text }) => {
   const { setCategory } = useCoffee()
 
-  const handleClick = (e) => {
-    const category = e.target.innerText
-    setCategory(category)
-  }
-
   return (
-    <li className="category-item" onClick={handleClick}>
+    <li
+      className="category-item"
+      onClick={(e) => setCategory(e.target.innerText)}
+    >
       {text}
     </li>
   )

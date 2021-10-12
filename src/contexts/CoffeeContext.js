@@ -21,13 +21,7 @@ export const CoffeeContextProvider = ({ children }) => {
   const uniqCategoryFinder = useCallback(
     () => [
       allCoffeesTxt,
-      ...coffeeData.reduce(
-        (uniqCategoryList, coffee) =>
-          uniqCategoryList.includes(coffee.category)
-            ? uniqCategoryList
-            : [...uniqCategoryList, coffee.category],
-        []
-      )
+      ...new Set(coffeeData.map((coffee) => coffee.category))
     ],
     [coffeeData]
   )
